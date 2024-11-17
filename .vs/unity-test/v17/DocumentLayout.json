@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\itot\\Desktop\\unity-test\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|c:\\users\\itot\\desktop\\unity-test\\assets\\scripts\\tesseractrenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tesseractrenderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TesseractRenderer.cs",
+              "DocumentMoniker": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\TesseractRenderer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TesseractRenderer.cs",
+              "ToolTip": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\TesseractRenderer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TesseractRenderer.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAIwKAAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T19:19:57.338Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
