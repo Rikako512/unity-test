@@ -63,6 +63,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\PythonLifeCycle.cs" />
+    <Compile Include="Assets\Scripts\ScatterPlotManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\DataPointInfo.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets\Scripts\CubeSpawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
@@ -148,6 +150,7 @@
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\pdist-minkowski-5.8-ml-iris.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\pdist-correlation-ml-iris.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\pdist-hamming-ml.txt" />
+    <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\tzdata-2024.2.dist-info\top_level.txt" />
     <None Include="Assets\StreamingAssets\python-3.12.4-embed-amd64\libffi-8.dll" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\pdist-cosine-ml-iris.txt" />
     <None Include="Assets\StreamingAssets\python-3.12.4-embed-amd64\Lib\site-packages\numpy\_core\include\numpy\random\LICENSE.txt" />
@@ -170,7 +173,9 @@
     <None Include="Assets\StreamingAssets\python-3.12.4-embed-amd64\vcruntime140.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\iris.txt" />
+    <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\python_dateutil-2.9.0.post0.dist-info\top_level.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\pytz-2024.2.dist-info\LICENSE.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\qhull_src\COPYING.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\pdist-correlation-ml.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
@@ -186,6 +191,7 @@
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\pdist-cosine-ml.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\StreamingAssets\python-3.12.4-embed-amd64\Lib\site-packages\numpy\f2py\_backends\meson.build.template" />
+    <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\pandas.libs\msvcp140-0f2ea95580b32bcfc81c235d5751ce78.dll" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\libssl-1_1.dll" />
     <None Include="Assets\StreamingAssets\python-3.12.4-embed-amd64\Lib\site-packages\pip-24.0.dist-info\LICENSE.txt" />
@@ -203,6 +209,7 @@
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\setuptools-70.1.1.dist-info\top_level.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\pip-24.1.1.dist-info\top_level.txt" />
     <None Include="Assets\StreamingAssets\python-3.12.4-embed-amd64\python3.dll" />
+    <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\pytz-2024.2.dist-info\top_level.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\sklearn\datasets\tests\data\svmlight_classification.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\pdist-spearman-ml.txt" />
@@ -224,11 +231,13 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\StreamingAssets\python-3.12.4-embed-amd64\Lib\site-packages\setuptools-70.1.0.dist-info\top_level.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\libffi-8.dll" />
+    <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\six-1.16.0.dist-info\top_level.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\Cython-0.29.37.dist-info\entry_points.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\random-double-data.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\pdist-jaccard-ml.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\pdist-cityblock-ml.txt" />
     <None Include="Assets\StreamingAssets\python-3.12.4-embed-amd64\libcrypto-3.dll" />
+    <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\pandas-2.2.3.dist-info\entry_points.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\StreamingAssets\python-3.11.3-embed-amd64\Lib\site-packages\scipy\spatial\tests\data\random-int-data.txt" />
