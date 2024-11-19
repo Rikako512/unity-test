@@ -8301,7 +8301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 1
   rotate: 1
-  showWhiteEdges: 0
+  showWhiteEdges: 1
   rotationSpeed: 30
   lineMaterial: {fileID: 2100000, guid: ce7b90ba70022b345a8e7d59f8c22873, type: 2}
   transparentMaterial: {fileID: 2100000, guid: c6d9f8d138704084c9e5dc92e3e60a95, type: 2}
