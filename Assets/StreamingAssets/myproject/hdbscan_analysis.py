@@ -38,7 +38,7 @@ def perform_hdbscan_analysis(data):
         "noise_points": int(noise_points),
         "marker_sizes": marker_sizes.tolist()
     }
-
+   
 
 if __name__ == "__main__":
     result = perform_hdbscan_analysis()

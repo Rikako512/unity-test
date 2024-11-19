@@ -45,6 +45,8 @@ public class CSVData : MonoBehaviour
         }
 
       }
+      
+      Nakami();
 
       Debug.Log("---------- CSVData 終了 ----------");
     }
@@ -80,5 +82,21 @@ public class CSVData : MonoBehaviour
       }
 
       return minValue;
+    }
+
+    // pointList の最初の5行を出力する
+    private void Nakami()
+    {
+        for (int i = 0; i < Mathf.Min(5, pointList.Count); i++)
+        {
+            Dictionary<string, object> row = pointList[i];
+            Debug.Log($"Row {i + 1}:");
+
+            // 辞書の中身を出力
+            foreach (var pair in row)
+            {
+                Debug.Log($"{pair.Key}: {pair.Value}");
+            }
+        }
     }
 }
