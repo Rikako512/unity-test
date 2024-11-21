@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\itot\\Desktop\\unity-test\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|C:\\Users\\itot\\Desktop\\unity-test\\assets\\scripts\\scatterplotmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|c:\\users\\itot\\desktop\\unity-test\\assets\\scripts\\scatterplotmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scatterplotmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -60,7 +60,7 @@
               "RelativeDocumentMoniker": "Assets\\StreamingAssets\\myproject\\clustering.py",
               "ToolTip": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\StreamingAssets\\myproject\\clustering.py",
               "RelativeToolTip": "Assets\\StreamingAssets\\myproject\\clustering.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAWAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-11-18T22:54:16.756Z",
               "EditorCaption": ""
@@ -73,7 +73,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\ScatterPlotManager.cs",
               "ToolTip": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\ScatterPlotManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\ScatterPlotManager.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAQwFsAAAAJAAAA",
+              "ViewState": "AQIAAHgAAAAAAAAAAADwv4oAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-18T22:49:36.883Z",
               "EditorCaption": ""

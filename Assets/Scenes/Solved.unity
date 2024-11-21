@@ -3911,7 +3911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec0fd2dc60a7fc41ba3ba049b1b22cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputfile: labor
+  inputfile: world_sns_7col_nolabel
 --- !u!4 &922591796
 Transform:
   m_ObjectHideFlags: 0

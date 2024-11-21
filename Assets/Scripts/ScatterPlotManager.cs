@@ -74,7 +74,8 @@ public class ScatterPlotManager : MonoBehaviour
 
                         // 結果の取得
                         var order = ConvertToIntList(resultPy["order"]);
-                        var featureTriplets = ConvertToStringTupleList(resultPy["feature_triplets"]);
+                        var features = ConvertToStringList(resultPy["features"]);
+                        var featureTriplets = ConvertToStringTripletList(resultPy["feature_triplets"]);
 
                         Debug.Log("Order count: " + order.Count);
                         Debug.Log("First 5 elements of order: " + string.Join(", ", order.Take(5)));
@@ -113,7 +114,20 @@ public class ScatterPlotManager : MonoBehaviour
         return order;
     }
 
-    private List<(string, string, string)> ConvertToStringTupleList(PyObject pyFeatureTriplets)
+    private List<string> ConvertToStringList(PyObject pyFeatures)
+    {
+        List<string> features = new List<string>();
+        using (PyList list = new PyList(pyFeatures))
+        {
+            foreach (PyObject item in list)
+            {
+                features.Add(item.ToString());
+            }
+        }
+        return features;
+    }
+
+    private List<(string, string, string)> ConvertToStringTripletList(PyObject pyFeatureTriplets)
     {
         List<(string, string, string)> featureTriplets = new List<(string, string, string)>();
         // PyListとしてpyFeatureTripletsをラップ
@@ -134,7 +148,6 @@ public class ScatterPlotManager : MonoBehaviour
     private void DrawScatterPlots(List<int> order, List<(string, string, string)> featureTriplets)
     {
         float spacing = 2.0f; // キューブ間の間隔
-        Vector3 cubePosition = transform.position;
 
         for (int i = 0; i < order.Count; i++)
         {
@@ -163,6 +176,7 @@ public class ScatterPlotManager : MonoBehaviour
             if (textMesh != null)
             {
                 textMesh.text = index.ToString();
+                //textMesh.text = $"{index}\n{features.Item1}\n{features.Item2}\n{features.Item3}";
                 textMesh.fontSize = 20; // 3D空間でのサイズを調整
                 textMesh.color = Color.black;
                 textMesh.alignment = TextAlignmentOptions.Center;
@@ -170,8 +184,12 @@ public class ScatterPlotManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError($"Failed to add TextMeshPro component to cube {index}");
+                Debug.LogError($"Failed to add TextMeshPro component to text object for cube {index}");
             }
+
+            // テキストを見やすくするために、テキストオブジェクトをカメラの方向に向ける
+            textObject.transform.LookAt(Camera.main.transform);
+            textObject.transform.Rotate(0, 180, 0); // テキストが反転するのを防ぐ
 
             /*
             var featureTriplet = featureTriplets[index];
