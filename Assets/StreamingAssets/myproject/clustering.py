@@ -25,12 +25,13 @@ def analyze_data(data):
     X, features = load_data(data)
     
     feature_vectors = []
-    feature_pairs = []
+    feature_triplets = []
     
     for i in range(len(features)):
-        for j in range(i + 1, len(features)):
-            feature_vectors.append(generate_feature_vector(X, i, j))
-            feature_pairs.append((features[i], features[j]))
+        for j in range(i+1, len(features)):
+            for k in range(j+1, len(features)):
+                feature_vectors.append(generate_feature_vector(X, i, j))
+                feature_triplets.append((features[i], features[j], features[k])) 
 
     feature_vectors = np.array(feature_vectors)
     
@@ -50,6 +51,6 @@ def analyze_data(data):
     
     return {
         'order': order,
-        'feature_pairs': feature_pairs,
-        'linkage_matrix': linkage_matrix.tolist()
+        'features': features,
+        'feature_triplets': feature_triplets
     }

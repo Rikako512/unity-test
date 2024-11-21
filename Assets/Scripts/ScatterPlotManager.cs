@@ -1,8 +1,9 @@
+using Python.Runtime;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
-using Python.Runtime;
+using System.Linq;
 using TMPro;
+using UnityEngine;
 
 public class ScatterPlotManager : MonoBehaviour
 {
@@ -69,13 +70,24 @@ public class ScatterPlotManager : MonoBehaviour
                     // クラスタ分析を実行
                     using (PyObject resultPy = clusterModule.InvokeMethod("analyze_data", dataList))
                     {
+                        Debug.Log("Python result: " + resultPy.ToString());
+
                         // 結果の取得
                         var order = ConvertToIntList(resultPy["order"]);
-                        var featurePairs = ConvertToStringTupleList(resultPy["feature_pairs"]);
+                        var features = ConvertToStringList(resultPy["features"]);
+                        var featureTriplets = ConvertToStringTripletList(resultPy["feature_triplets"]);
+
+                        Debug.Log("Order count: " + order.Count);
+                        Debug.Log("First 5 elements of order: " + string.Join(", ", order.Take(5)));
+
+                        Debug.Log("Feature triplets count: " + featureTriplets.Count);
+                        Debug.Log("First 5 elements of feature triplets: " + string.Join(", ", featureTriplets.Take(5).Select(t => $"({t.Item1}, {t.Item2}, {t.Item3})")));
 
                         // 散布図の描画
-                        DrawScatterPlots(order, featurePairs);
+                        DrawScatterPlots(order, featureTriplets);
                     }
+
+
                 }
             }
         }
@@ -102,29 +114,40 @@ public class ScatterPlotManager : MonoBehaviour
         return order;
     }
 
-    private List<(string, string)> ConvertToStringTupleList(PyObject pyFeaturePairs)
+    private List<string> ConvertToStringList(PyObject pyFeatures)
     {
-        List<(string, string)> featurePairs = new List<(string, string)>();
-
-        // PyListとしてpyFeaturePairsをラップ
-        using (PyList list = new PyList(pyFeaturePairs))
+        List<string> features = new List<string>();
+        using (PyList list = new PyList(pyFeatures))
         {
-            // 各ペアをタプルとしてリストに追加
-            foreach (PyObject pair in list)
+            foreach (PyObject item in list)
             {
-                string feature1 = pair[0].ToString();
-                string feature2 = pair[1].ToString();
-                featurePairs.Add((feature1, feature2));
+                features.Add(item.ToString());
+            }
+        }
+        return features;
+    }
+
+    private List<(string, string, string)> ConvertToStringTripletList(PyObject pyFeatureTriplets)
+    {
+        List<(string, string, string)> featureTriplets = new List<(string, string, string)>();
+        // PyListとしてpyFeatureTripletsをラップ
+        using (PyList list = new PyList(pyFeatureTriplets))
+        {
+            foreach (PyObject triplet in list)
+            {
+                string feature1 = triplet[0].ToString();
+                string feature2 = triplet[1].ToString();
+                string feature3 = triplet[2].ToString();
+                featureTriplets.Add((feature1, feature2, feature3));
             }
         }
 
-        return featurePairs;
+        return featureTriplets;
     }
 
-    private void DrawScatterPlots(List<int> order, List<(string, string)> featurePairs)
+    private void DrawScatterPlots(List<int> order, List<(string, string, string)> featureTriplets)
     {
         float spacing = 2.0f; // キューブ間の間隔
-        Vector3 cubePosition = transform.position;
 
         for (int i = 0; i < order.Count; i++)
         {
@@ -153,6 +176,7 @@ public class ScatterPlotManager : MonoBehaviour
             if (textMesh != null)
             {
                 textMesh.text = index.ToString();
+                //textMesh.text = $"{index}\n{features.Item1}\n{features.Item2}\n{features.Item3}";
                 textMesh.fontSize = 20; // 3D空間でのサイズを調整
                 textMesh.color = Color.black;
                 textMesh.alignment = TextAlignmentOptions.Center;
@@ -160,17 +184,21 @@ public class ScatterPlotManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError($"Failed to add TextMeshPro component to cube {index}");
+                Debug.LogError($"Failed to add TextMeshPro component to text object for cube {index}");
             }
 
+            // テキストを見やすくするために、テキストオブジェクトをカメラの方向に向ける
+            textObject.transform.LookAt(Camera.main.transform);
+            textObject.transform.Rotate(0, 180, 0); // テキストが反転するのを防ぐ
+
             /*
-            var featurePair = featurePairs[index];
-            Debug.Log($"Drawing scatter plot for: {featurePair.Item1} vs {featurePair.Item2}");
+            var featureTriplet = featureTriplets[index];
+            Debug.Log($"Drawing scatter plot for: {featureTriplet.Item1} vs {featureTriplet.Item2}");
 
             // ここで3Dオブジェクトとして散布図を描画する処理を追加します。
             */
         }
-        
-        
+
+
     }
 }
