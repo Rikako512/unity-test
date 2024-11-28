@@ -8,12 +8,16 @@ using UnityEngine;
 public class ScatterPlotManager : MonoBehaviour
 {
     public GameObject plotPrefab;
+    public GameObject PlotContainer; // å¤šæ•°ã®æ•£å¸ƒå›³ã‚’æ ¼ç´ã™ã‚‹å ´æ‰€
+    public bool textDisplay =  true; // ãƒ†ã‚­ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¡¨ç¤º
+    public float spacing = 2.0f; // æ•£å¸ƒå›³é–“ã®é–“éš”
+    public float baseHeight = 50.0f; // åŸºæº–ã®é«˜ã•
 
     void Start()
     {
-        Debug.Log("---------- ScatterPlotManagerŠJn ----------");
+        Debug.Log("---------- ScatterPlotManageré–‹å§‹ ----------");
 
-        // CSVData.pointList ‚ª€”õ‚Å‚«‚é‚Ü‚Å‘Ò‹@
+        // CSVData.pointList ãŒæº–å‚™ã§ãã‚‹ã¾ã§å¾…æ©Ÿ
         StartCoroutine(WaitForCSVDataAndAnalyze());
     }
 
@@ -33,11 +37,11 @@ public class ScatterPlotManager : MonoBehaviour
 
         using (Py.GIL())
         {
-            // PythonƒXƒNƒŠƒvƒg‚ÌƒpƒX‚ğİ’è
+            // Pythonã‚¹ã‚¯ãƒªãƒ—ãƒˆã®ãƒ‘ã‚¹ã‚’è¨­å®š
             string scriptPath = Path.Combine(Application.dataPath, "StreamingAssets", "myproject", "clustering.py");
             Debug.Log("Script Path: " + scriptPath);
 
-            // ƒXƒNƒŠƒvƒg‚ğ“®“I‚ÉƒCƒ“ƒ|[ƒg
+            // ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å‹•çš„ã«ã‚¤ãƒ³ãƒãƒ¼ãƒˆ
             using (PyModule sys = (PyModule)Py.Import("sys"))
             {
                 sys.Get("path").InvokeMethod("append", new PyString(Path.GetDirectoryName(scriptPath)));
@@ -45,7 +49,7 @@ public class ScatterPlotManager : MonoBehaviour
 
             using (PyModule clusterModule = (PyModule)Py.Import("clustering"))
             {
-                // CSVƒf[ƒ^‚ğPythonƒŠƒXƒg‚É•ÏŠ·
+                // CSVãƒ‡ãƒ¼ã‚¿ã‚’Pythonãƒªã‚¹ãƒˆã«å¤‰æ›
                 using (PyList dataList = new PyList())
                 {
                     foreach (var row in CSVData.pointList)
@@ -67,12 +71,12 @@ public class ScatterPlotManager : MonoBehaviour
                         return;
                     }
 
-                    // ƒNƒ‰ƒXƒ^•ªÍ‚ğÀs
+                    // ã‚¯ãƒ©ã‚¹ã‚¿åˆ†æã‚’å®Ÿè¡Œ
                     using (PyObject resultPy = clusterModule.InvokeMethod("analyze_data", dataList))
                     {
                         Debug.Log("Python result: " + resultPy.ToString());
 
-                        // Œ‹‰Ê‚Ìæ“¾
+                        // çµæœã®å–å¾—
                         var order = ConvertToIntList(resultPy["order"]);
                         var features = ConvertToStringList(resultPy["features"]);
                         var featureTriplets = ConvertToStringTripletList(resultPy["feature_triplets"]);
@@ -83,7 +87,7 @@ public class ScatterPlotManager : MonoBehaviour
                         Debug.Log("Feature triplets count: " + featureTriplets.Count);
                         Debug.Log("First 5 elements of feature triplets: " + string.Join(", ", featureTriplets.Take(5).Select(t => $"({t.Item1}, {t.Item2}, {t.Item3})")));
 
-                        // U•z}‚Ì•`‰æ
+                        // æ•£å¸ƒå›³ã®æç”»
                         DrawScatterPlots(order, featureTriplets);
                     }
 
@@ -92,19 +96,19 @@ public class ScatterPlotManager : MonoBehaviour
             }
         }
 
-        // PythonƒGƒ“ƒWƒ“‚ÌI—¹
+        // Pythonã‚¨ãƒ³ã‚¸ãƒ³ã®çµ‚äº†
         PythonEngine.Shutdown();
-        Debug.Log("---------- ScatterPlotManagerI—¹ ----------");
+        Debug.Log("---------- ScatterPlotManagerçµ‚äº† ----------");
     }
 
     private List<int> ConvertToIntList(PyObject pyOrder)
     {
         List<int> order = new List<int>();
 
-        // PyList‚Æ‚µ‚ÄpyOrder‚ğƒ‰ƒbƒv
+        // PyListã¨ã—ã¦pyOrderã‚’ãƒ©ãƒƒãƒ—
         using (PyList list = new PyList(pyOrder))
         {
-            // Še—v‘f‚ğ®”‚É•ÏŠ·‚µ‚ÄƒŠƒXƒg‚É’Ç‰Á
+            // å„è¦ç´ ã‚’æ•´æ•°ã«å¤‰æ›ã—ã¦ãƒªã‚¹ãƒˆã«è¿½åŠ 
             foreach (PyObject item in list)
             {
                 order.Add(item.As<int>());
@@ -114,7 +118,7 @@ public class ScatterPlotManager : MonoBehaviour
         return order;
     }
 
-    private List<string> ConvertToStringList(PyObject pyFeatures)
+		private List<string> ConvertToStringList(PyObject pyFeatures)
     {
         List<string> features = new List<string>();
         using (PyList list = new PyList(pyFeatures))
@@ -126,11 +130,11 @@ public class ScatterPlotManager : MonoBehaviour
         }
         return features;
     }
-
+    
     private List<(string, string, string)> ConvertToStringTripletList(PyObject pyFeatureTriplets)
     {
         List<(string, string, string)> featureTriplets = new List<(string, string, string)>();
-        // PyList‚Æ‚µ‚ÄpyFeatureTriplets‚ğƒ‰ƒbƒv
+        // PyListã¨ã—ã¦pyFeatureTripletsã‚’ãƒ©ãƒƒãƒ—
         using (PyList list = new PyList(pyFeatureTriplets))
         {
             foreach (PyObject triplet in list)
@@ -147,58 +151,70 @@ public class ScatterPlotManager : MonoBehaviour
 
     private void DrawScatterPlots(List<int> order, List<(string, string, string)> featureTriplets)
     {
-        float spacing = 2.0f; // ƒLƒ…[ƒuŠÔ‚ÌŠÔŠu
+        int totalPlots = order.Count;
+        int rowCount = Mathf.CeilToInt(Mathf.Sqrt(totalPlots)); // è¡Œæ•°ã‚’è¨ˆç®—
 
-        for (int i = 0; i < order.Count; i++)
+        for (int i = 0; i < totalPlots; i++)
         {
             int index = order[i];
 
-            // ƒLƒ…[ƒu‚ğ¶¬
-            Vector3 position = new Vector3(i * spacing, 0, 0);
-            GameObject cube = Instantiate(plotPrefab, position, Quaternion.identity);
+            // ã‚­ãƒ¥ãƒ¼ãƒ–ã®ä½ç½®ã‚’è¨ˆç®—ï¼ˆæ­£æ–¹å½¢ã«è¿‘ã„å½¢ã«é…ç½®ã€Xè»¸ã¨Yè»¸ã‚’ä½¿ç”¨ã€ã€Yè»¸ã¯ä¸Šã‹ã‚‰ä¸‹ã«ï¼‰
+            int row = i / rowCount;
+            int col = i % rowCount;
+            Vector3 position = new Vector3(col * spacing, baseHeight - (row * spacing), 0);
+            GameObject plot = Instantiate(plotPrefab, position, Quaternion.identity);
 
-            if (cube == null)
+            if (plot == null)
             {
-                Debug.LogError($"Failed to instantiate cube at index {i}");
+                Debug.LogError($"Failed to instantiate plot at index {i}");
                 continue;
             }
 
-            // ƒLƒ…[ƒu‚É–¼Ì‚ğİ’è
-            cube.name = $"Cube {index}";
+            // PlotContainerã«æ ¼ç´
+            plot.transform.parent = PlotContainer.transform;
 
-            // ƒeƒLƒXƒgƒIƒuƒWƒFƒNƒg‚ğ¶¬
-            GameObject textObject = new GameObject($"Text {index}");
-            textObject.transform.SetParent(cube.transform);
-            textObject.transform.localPosition = new Vector3(0, 1.5f, 0); // ƒLƒ…[ƒu‚Ìã‚É”z’u
+            // plotã«åç§°ã‚’è¨­å®š
+            string plotName = $"Plot {index}";
+            plot.transform.name = plotName;
 
-            // TextMeshProƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’Ç‰Á
-            TextMeshPro textMesh = textObject.AddComponent<TextMeshPro>();
-            if (textMesh != null)
+            var features = featureTriplets[index];
+            //Debug.Log((features.Item1).GetType());
+
+            // scatterplotã®column1,2,3ã«æ ¼ç´ã™ã‚‹
+            PointRenderer scatterplotter = plot.transform.Find("GraphFrame/Plotter").gameObject.GetComponent<PointRenderer>();
+            scatterplotter.column1 = int.Parse(features.Item1);
+            scatterplotter.column2 = int.Parse(features.Item2);
+            scatterplotter.column3 = int.Parse(features.Item3);
+
+            if (textDisplay == true)
             {
-                textMesh.text = index.ToString();
-                //textMesh.text = $"{index}\n{features.Item1}\n{features.Item2}\n{features.Item3}";
-                textMesh.fontSize = 20; // 3D‹óŠÔ‚Å‚ÌƒTƒCƒY‚ğ’²®
-                textMesh.color = Color.black;
-                textMesh.alignment = TextAlignmentOptions.Center;
-                textMesh.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f); // ƒeƒLƒXƒg‚ÌƒXƒP[ƒ‹‚ğ’²®
+                // ãƒ†ã‚­ã‚¹ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆ
+                GameObject textObject = new GameObject($"Text {index}");
+                textObject.transform.SetParent(plot.transform);
+                textObject.transform.localPosition = new Vector3(0, 1.5f, 0); // ã‚­ãƒ¥ãƒ¼ãƒ–ã®ä¸Šã«é…ç½®
+
+                // TextMeshProã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿½åŠ 
+                TextMeshPro textMesh = textObject.AddComponent<TextMeshPro>();
+                if (textMesh != null)
+                {
+                    //textMesh.text = index.ToString();
+                    string feature1Name = CSVData.pointList[0].Keys.ElementAt(int.Parse(features.Item1));
+                    string feature2Name = CSVData.pointList[0].Keys.ElementAt(int.Parse(features.Item2));
+                    string feature3Name = CSVData.pointList[0].Keys.ElementAt(int.Parse(features.Item3));
+                
+                    textMesh.text = $"{index}\n{feature1Name}\n{feature2Name}\n{feature3Name}";
+                    textMesh.fontSize = 20; // 3Dç©ºé–“ã§ã®ã‚µã‚¤ã‚ºã‚’èª¿æ•´
+                    textMesh.color = Color.black;
+                    textMesh.alignment = TextAlignmentOptions.Center;
+                    textMesh.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f); // ãƒ†ã‚­ã‚¹ãƒˆã®ã‚¹ã‚±ãƒ¼ãƒ«ã‚’èª¿æ•´
+                }
+                else
+                {
+                    Debug.LogError($"Failed to add TextMeshPro component to text object for plot {index}");
+                }
             }
-            else
-            {
-                Debug.LogError($"Failed to add TextMeshPro component to text object for cube {index}");
-            }
 
-            // ƒeƒLƒXƒg‚ğŒ©‚â‚·‚­‚·‚é‚½‚ß‚ÉAƒeƒLƒXƒgƒIƒuƒWƒFƒNƒg‚ğƒJƒƒ‰‚Ì•ûŒü‚ÉŒü‚¯‚é
-            textObject.transform.LookAt(Camera.main.transform);
-            textObject.transform.Rotate(0, 180, 0); // ƒeƒLƒXƒg‚ª”½“]‚·‚é‚Ì‚ğ–h‚®
-
-            /*
-            var featureTriplet = featureTriplets[index];
-            Debug.Log($"Drawing scatter plot for: {featureTriplet.Item1} vs {featureTriplet.Item2}");
-
-            // ‚±‚±‚Å3DƒIƒuƒWƒFƒNƒg‚Æ‚µ‚ÄU•z}‚ğ•`‰æ‚·‚éˆ—‚ğ’Ç‰Á‚µ‚Ü‚·B
-            */
+            Debug.Log(features.Item1 + ", " + features.Item2 + ", " + features.Item3);
         }
-
-
     }
 }

@@ -51,6 +51,5 @@ def analyze_data(data):
     
     return {
         'order': order,
-        'features': features,
         'feature_triplets': feature_triplets
     }
