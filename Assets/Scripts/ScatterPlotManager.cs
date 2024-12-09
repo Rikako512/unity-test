@@ -78,7 +78,7 @@ public class ScatterPlotManager : MonoBehaviour
 
                         // 結果の取得
                         var order = ConvertToIntList(resultPy["order"]);
-                        var features = ConvertToStringList(resultPy["features"]);
+                        //var features = ConvertToStringList(resultPy["features"]);
                         var featureTriplets = ConvertToStringTripletList(resultPy["feature_triplets"]);
 
                         Debug.Log("Order count: " + order.Count);

@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\itot\\Desktop\\unity-test\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|c:\\users\\itot\\desktop\\unity-test\\assets\\scripts\\clickobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\clickobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|c:\\users\\itot\\desktop\\unity-test\\assets\\scripts\\scatterplotmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scatterplotmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\itot\\Desktop\\unity-test\\Assets\\StreamingAssets\\myproject\\clustering.py||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\StreamingAssets\\myproject\\clustering.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|C:\\Users\\itot\\Desktop\\unity-test\\assets\\scripts\\cubespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cubespawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|C:\\Users\\itot\\Desktop\\unity-test\\assets\\scripts\\hdbscananalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A30E018-DD17-0493-7551-2039D3F152BB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\hdbscananalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,54 +22,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClickObject.cs",
+              "DocumentMoniker": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\ClickObject.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ClickObject.cs",
+              "ToolTip": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\ClickObject.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ClickObject.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T06:55:51.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CubeSpawner.cs",
-              "DocumentMoniker": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\CubeSpawner.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CubeSpawner.cs",
-              "ToolTip": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\CubeSpawner.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CubeSpawner.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAADwvx0AAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T00:37:06.234Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HdbscanAnalysis.cs",
-              "DocumentMoniker": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\HdbscanAnalysis.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HdbscanAnalysis.cs",
-              "ToolTip": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\HdbscanAnalysis.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HdbscanAnalysis.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAQwFoAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T22:59:41.042Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "clustering.py",
               "DocumentMoniker": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\StreamingAssets\\myproject\\clustering.py",
               "RelativeDocumentMoniker": "Assets\\StreamingAssets\\myproject\\clustering.py",
               "ToolTip": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\StreamingAssets\\myproject\\clustering.py",
               "RelativeToolTip": "Assets\\StreamingAssets\\myproject\\clustering.py",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAAEAAAA",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAACsAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-11-18T22:54:16.756Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ScatterPlotManager.cs",
               "DocumentMoniker": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\ScatterPlotManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ScatterPlotManager.cs",
               "ToolTip": "C:\\Users\\itot\\Desktop\\unity-test\\Assets\\Scripts\\ScatterPlotManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\ScatterPlotManager.cs",
-              "ViewState": "AQIAAHgAAAAAAAAAAADwv4oAAAA4AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFAAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-18T22:49:36.883Z",
               "EditorCaption": ""
